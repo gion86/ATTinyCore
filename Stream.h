@@ -25,11 +25,22 @@
 
 class Stream : public Print
 {
+  protected:
+    unsigned long _timeout;     // number of milliseconds to wait for the next char before aborting timed read
+    unsigned long _startMillis;	// used for timeout measurement
+    int timedRead();    		// private method to read stream with timeout
+
   public:
     virtual int available() = 0;
     virtual int read() = 0;
     virtual int peek() = 0;
     virtual void flush() = 0;
+
+	// Terminates if length characters have been read or timeout (see setTimeout).
+    // Returns the number of characters placed in the buffer (0 means no valid data found)
+    size_t readBytes( char *buffer, size_t length); // read chars from stream into buffer
+    size_t readBytes( uint8_t *buffer, size_t length) { return readBytes((char *)buffer, length); }
+    
 };
 
 #endif
