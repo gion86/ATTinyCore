@@ -29,6 +29,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.376016883" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 								</option>
+								<option id="de.innot.avreclipse.compiler.option.optimize.other.749809108" name="Other Optimization Flags" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-flto -fno-devirtualize" valueType="string"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.1590188248" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.lib.release.1589382248" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.lib.release">
@@ -37,11 +38,12 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.2050381481" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}&quot;"/>
 								</option>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.246759076" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-flto -fno-devirtualize" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.1910946182" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.254757544" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
 							<tool id="de.innot.avreclipse.tool.cpplinker.base.638594592" name="AVR C++ Linker" superClass="de.innot.avreclipse.tool.cpplinker.base"/>
-							<tool id="de.innot.avreclipse.tool.archiver.winavr.lib.release.1347008181" name="AVR Archiver" superClass="de.innot.avreclipse.tool.archiver.winavr.lib.release"/>
+							<tool command="avr-gcc-ar" id="de.innot.avreclipse.tool.archiver.winavr.lib.release.1347008181" name="AVR Archiver" superClass="de.innot.avreclipse.tool.archiver.winavr.lib.release"/>
 							<tool id="de.innot.avreclipse.tool.objdump.winavr.lib.release.644405539" name="AVR Create Extended Listing" superClass="de.innot.avreclipse.tool.objdump.winavr.lib.release"/>
 							<tool id="de.innot.avreclipse.tool.size.winavr.lib.release.1830540792" name="Print Size" superClass="de.innot.avreclipse.tool.size.winavr.lib.release"/>
 						</toolChain>
