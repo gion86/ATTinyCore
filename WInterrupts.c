@@ -33,10 +33,9 @@
 #include <avr/pgmspace.h>
 #include <stdio.h>
 
-#include "WConstants.h"
 #include "wiring_private.h"
 
-volatile static voidFuncPtr intFunc[NUMBER_EXTERNAL_INTERRUPTS];
+static volatile voidFuncPtr intFunc[NUMBER_EXTERNAL_INTERRUPTS];
 
 #if defined( MCUCR ) && ! defined( EICRA )
   #define EICRA MCUCR
@@ -83,7 +82,15 @@ void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode)
           break;
       #endif
 
-      #if NUMBER_EXTERNAL_INTERRUPTS >= 2
+      #if NUMBER_EXTERNAL_INTERRUPTS >= 2 && !defined(ISC11)
+	  //For ATtiny861, but interrupts share the same vector.
+        case EXTERNAL_INTERRUPT_1:
+          EICRA = (EICRA & ~((1 << ISC00) | (1 << ISC01))) | (mode << ISC00);
+          EIMSK |= (1 << INT1);
+          break;
+      #endif
+
+      #if NUMBER_EXTERNAL_INTERRUPTS >= 2 && defined(ISC11)
         case EXTERNAL_INTERRUPT_1:
           EICRA = (EICRA & ~((1 << ISC10) | (1 << ISC11))) | (mode << ISC10);
           EIMSK |= (1 << INT1);
